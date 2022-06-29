@@ -2,7 +2,7 @@
 
 article {
   padding: 20px;
-  max-width: 400px;
+  min-width: 400px;
   background: var(#{--components-background-default});
   box-shadow: $box-shadow;
   border-radius: $border-radius;
@@ -19,7 +19,7 @@ article {
     font-weight: 500;
     color: $primary-color;
   }
-  .this_day {
+  .this__day {
     font-size: 40px;
     color: var(#{--text-color-default});
   }
