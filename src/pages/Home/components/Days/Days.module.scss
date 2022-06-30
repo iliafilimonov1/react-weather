@@ -1,6 +1,5 @@
 @import "../../../../styles/variables.scss";
 
-
 .days {
   display: flex;
   justify-content: space-between;
@@ -62,12 +61,16 @@
 .tabs {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 16px;
+}
 
-  margin-bottom: 7px;
+.tabs__wrapper {
+  display: flex;
 }
 
 .cancel,
 .tab {
+  min-width: 120px;
   box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
   border-radius: 5px;
   padding: 9px 20px;
@@ -77,8 +80,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 15px;
+  margin-right: 16px;
   cursor: pointer;
+  outline: none;
+  border: 0;
 }
 
 .cancel {
@@ -90,8 +95,4 @@
     background: $primary-color;
     color: #fff;
   }
-}
-
-.tabs__wrapper {
-  display: flex;
 }

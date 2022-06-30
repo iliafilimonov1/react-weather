@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "../Days/Card";
 
 import s from "./Days.module.scss";
+import { Tabs } from "./Tabs";
 
 interface Props {}
 
@@ -22,7 +23,7 @@ export const Days = (props: Props) => {
       icon_id: "sun",
       temp_day: "+18",
       temp_night: "+15",
-      info: "Cloudy",
+      info: "Sunny",
     },
     {
       day: "Tomorrow",
@@ -46,7 +47,7 @@ export const Days = (props: Props) => {
       icon_id: "mainly_cloudy",
       temp_day: "+18",
       temp_night: "+15",
-      info: "Cloudy",
+      info: "Sunny",
     },
     {
       day: "Fr",
@@ -62,7 +63,7 @@ export const Days = (props: Props) => {
       icon_id: "sun",
       temp_day: "+18",
       temp_night: "+15",
-      info: "Cloudy",
+      info: "Sunny",
     },
     {
       day: "Sun",
@@ -70,14 +71,17 @@ export const Days = (props: Props) => {
       icon_id: "sun",
       temp_day: "+18",
       temp_night: "+15",
-      info: "Cloudy",
+      info: "Sunny",
     },
   ];
   return (
-    <div className={s.days}>
-      {days.map((day: Day) => (
-        <Card day={day} key={day.day} />
-      ))}
-    </div>
+    <>
+      <Tabs />
+      <div className={s.days}>
+        {days.map((day: Day) => (
+          <Card day={day} key={day.day} />
+        ))}
+      </div>
+    </>
   );
 };
