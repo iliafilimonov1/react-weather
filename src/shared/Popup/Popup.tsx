@@ -34,13 +34,19 @@ export const Popup = ({}: Props) => {
       <div className={s.blur}></div>
       <div className={s.popup}>
         <div className={s.day}>
-          <h2 className={s.day__temp}>12°</h2>
-          <p className={s.day__name}>Today</p>
-          <div className={s.img}>
-            <GlobalSvgSelector id="sun" />
+          <div className={s.day__wrapper}>
+            <h2 className={s.day__temp}>12°</h2>
+            <div className={s.img}>
+              <GlobalSvgSelector id="sun" />
+            </div>
           </div>
-          <p className={s.day__time}>Time: <span>10:10 a.m.</span></p>
-          <p className={s.day__city}>City: <span>Amsterdam</span></p>
+          <p className={s.day__name}>Today</p>
+          <p className={s.day__time}>
+            Time: <span>10:10 a.m.</span>
+          </p>
+          <p className={s.day__city}>
+            City: <span>Amsterdam</span>
+          </p>
         </div>
         <div className={s.this__day_info_items}>
           {items.map((item: Item) => (
