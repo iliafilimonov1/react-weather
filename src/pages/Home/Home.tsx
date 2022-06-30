@@ -13,7 +13,7 @@ export const Home = (props: Props) => {
         <ThisDay />
         <ThisDayInfo />
       </section>
-      <section className={s.flex}>
+      <section>
         <Days />
       </section>
     </>
