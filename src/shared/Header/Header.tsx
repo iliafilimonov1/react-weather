@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Select from "react-select";
 import { GlobalSvgSelector } from "../../assets/icons/global/GlobalSvgSelector";
+import { Theme } from "../../context/ThemeContext";
 
+import { useTheme } from "../../hooks/useTheme";
 import s from "./Header.module.scss";
 
 interface Props {}
 
 export const Header = (props: Props) => {
+  const theme = useTheme();
   const options = [
     { value: "amsterdam", label: "Amsterdam" },
     { value: "berlin", label: "Berlin" },
@@ -16,7 +19,8 @@ export const Header = (props: Props) => {
   const colourStyles = {
     control: (styles: any) => ({
       ...styles,
-      backgroundColor: 0 ? "#4F4F4F" : "rgba(71, 147, 255, 0.2)",
+      backgroundColor:
+        theme.theme === Theme.DARK ? "#4F4F4F" : "rgba(71, 147, 255, 0.2)",
       width: "194px",
       height: "37px",
       border: "0",
@@ -24,32 +28,12 @@ export const Header = (props: Props) => {
     }),
     singleValue: (styles: any) => ({
       ...styles,
-      color: 0 ? "#fff" : "#000",
+      color: theme.theme === Theme.DARK ? "#fff" : "#000",
     }),
   };
 
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const root = document.querySelector(":root") as HTMLElement;
-    const components = [
-      "body-background",
-      "components-background",
-      "card-background",
-      "card-shadow",
-      "text-color",
-    ];
-
-    components.forEach((component) => {
-      root.style.setProperty(
-        `--${component}-default`,
-        `var(--${component}-${theme})`
-      );
-    });
-  }, [theme]);
-
   function changeTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
+    theme.changeTheme(theme.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT);
   }
 
   return (
@@ -64,7 +48,11 @@ export const Header = (props: Props) => {
         <div className={s.change_theme} onClick={changeTheme}>
           <GlobalSvgSelector id="change-theme" />
         </div>
-        <Select styles={colourStyles} defaultValue={options[0]} options={options} />
+        <Select
+          styles={colourStyles}
+          defaultValue={options[0]}
+          options={options}
+        />
       </div>
     </header>
   );
